@@ -1994,6 +1994,17 @@ do
             Parent = Container;
         });
 
+        SliderOuter:GetPropertyChangedSignal('AbsoluteSize'):Connect(function()
+            Slider.MaxSize = math.floor(SliderOuter.AbsoluteSize.X) - 2
+            Slider:Display()
+        end)
+        
+        task.spawn(function()
+            task.wait()
+            Slider.MaxSize = math.floor(SliderOuter.AbsoluteSize.X) - 2
+            Slider:Display()
+        end)
+
         Library:AddToRegistry(SliderOuter, {
             BorderColor3 = 'Black';
         });
